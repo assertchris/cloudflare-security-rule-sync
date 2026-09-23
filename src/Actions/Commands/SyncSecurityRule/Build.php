@@ -34,8 +34,10 @@ class Build
                     $route = Str::before($route, '*').'*';
                 }
 
-                return sprintf('http.request.uri.path wildcard "%s"', $route);
-            })->join(' or ');
+                return $route;
+            })->unique()->values()->map(
+                fn ($route) => sprintf('http.request.uri.path wildcard "%s"', $route)
+            )->join(' or ');
         }
 
         $expression .= ')';
