@@ -22,7 +22,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "AC\\CloudflareSecurityRuleSyncServiceProvider"
+                "AC\\CloudflareSecurityRuleSync\\CloudflareSecurityRuleSyncServiceProvider"
             ]
         }
     },
