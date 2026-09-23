@@ -1,0 +1,44 @@
+{
+    "name": "assertchris/cloudflare-security-rule-sync",
+    "description": "Sync a Cloudflare custom security rule from your Laravel routes using the Rulesets API.",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "php": ">=8.3",
+        "illuminate/console": "^13",
+        "illuminate/support": "^13",
+        "illuminate/http": "^13"
+    },
+    "autoload": {
+        "psr-4": {
+            "AC\\CloudflareSecurityRuleSync\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "AC\\CloudflareSecurityRuleSync\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AC\\CloudflareSecurityRuleSyncServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "format": "./vendor/bin/pint",
+        "test": "./vendor/bin/pest"
+    },
+    "minimum-stability": "stable",
+    "require-dev": {
+        "laravel/pint": "1.32.1",
+        "orchestra/testbench": "11.2.0",
+        "pestphp/pest": "5.2.1"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    }
+}
