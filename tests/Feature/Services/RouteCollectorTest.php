@@ -78,6 +78,15 @@ it('excludes bare slash and wildcard from forced allow paths', function () {
     expect(makeCollector()->forcedAllowPaths())->toBeEmpty();
 });
 
+it('forced allow paths survive even when they match an ignorable pattern', function () {
+    config()->set('cloudflare-security-rule-sync.rule.ignorable_paths', ['/*/book/*']);
+    config()->set('cloudflare-security-rule-sync.rule.forced_allow_paths', ['/api/book/*/*']);
+
+    $paths = makeCollector()->collect();
+
+    expect($paths->contains('/api/book/*/*'))->toBeTrue();
+});
+
 it('correctly identifies ignorable paths using wildcards', function () {
     config()->set('cloudflare-security-rule-sync.rule.ignorable_paths', ['/_dusk/*']);
 

@@ -21,7 +21,6 @@ class RouteCollector
         return ($this->appRoutes)()
             ->merge(($this->folioRoutes)())
             ->merge(($this->publicPaths)())
-            ->merge($this->forcedAllowPaths())
             ->unique()
             ->map(function (string $path) {
                 if (Str::contains($path, '{')) {
@@ -32,6 +31,8 @@ class RouteCollector
             })
             ->reject(fn (string $path) => $path === '*' || $path === '/*')
             ->reject(fn (string $path) => $this->isIgnorable($path))
+            ->merge($this->forcedAllowPaths())
+            ->unique()
             ->values();
     }
 
